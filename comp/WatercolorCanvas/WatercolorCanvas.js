@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import { Text, View } from 'react-native';
-import CanvasComponent from '../CanvasComponent';
+import Canvas from '../Canvas';
 
 const WatercolorCanvas = () => {
   const draw = ctx => {
@@ -12,7 +12,7 @@ const WatercolorCanvas = () => {
   return (
     <View>
       <Text>Canvas</Text>
-      <CanvasComponent draw={draw} />
+      <Canvas draw={draw} />
     </View>
   );
 };
