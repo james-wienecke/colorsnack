@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useCallback } from 'react';
+import React from 'react';
 import { View, useWindowDimensions } from 'react-native';
 import { StatusBarHeight } from '../../util';
 import Canvas from '../Canvas';
