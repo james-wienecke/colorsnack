@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useCallback } from 'react';
-import { Text, View } from 'react-native';
+import { View, useWindowDimensions } from 'react-native';
 import Canvas from '../Canvas';
 
 const WatercolorCanvas = () => {
@@ -9,10 +9,11 @@ const WatercolorCanvas = () => {
     ctx.fill();
   };
 
+  const windowDims = useWindowDimensions();
+
   return (
     <View>
-      <Text>Canvas</Text>
-      <Canvas draw={draw} />
+      <Canvas draw={draw} width={windowDims.width} height={windowDims.height} />
     </View>
   );
 };
