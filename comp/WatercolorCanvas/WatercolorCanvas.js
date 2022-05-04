@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useCallback } from 'react';
 import { View, useWindowDimensions } from 'react-native';
+import { StatusBarHeight } from '../../util/statusbar';
 import Canvas from '../Canvas';
 
 const WatercolorCanvas = () => {
@@ -18,7 +19,7 @@ const WatercolorCanvas = () => {
 
   return (
     <View>
-      <Canvas draw={draw} width={windowDims.width} height={windowDims.height} />
+      <Canvas draw={draw} width={windowDims.width} height={windowDims.height - StatusBarHeight} />
     </View>
   );
 };
