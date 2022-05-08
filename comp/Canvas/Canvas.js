@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { PanResponder, Text, View, Alert } from 'react-native';
 import CanvasNative from 'react-native-canvas';
-import useCanvas from './useCanvas';
+import { useCanvas } from './useCanvas';
 
 const Canvas = props => {
-  const { width, height, ...rest } = props;
+  const { width, height, brushColor, ...rest } = props;
   const [draw, setDraw] = useState(() => () => null);
   const [pos, setPos] = useState({ x: null, y: null });
 
@@ -18,6 +18,7 @@ const Canvas = props => {
     // setPos({ x: locationX, y: locationY });
     updatePos(nativeEvent);
     setDraw(() => ctx => {
+      ctx.strokeStyle = brushColor;
       ctx.beginPath();
       ctx.moveTo(nativeEvent.locationX, nativeEvent.locationY);
     });
@@ -54,9 +55,9 @@ const Canvas = props => {
 
   return (
     <View {...panResponder.panHandlers}>
-      <Text>
-        X: {pos.x} Y: {pos.y}
-      </Text>
+      {/*<Text>*/}
+      {/*  X: {pos.x} Y: {pos.y}*/}
+      {/*</Text>*/}
       <CanvasNative ref={canvasRef} {...rest} />
     </View>
   );
