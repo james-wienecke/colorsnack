@@ -1,25 +1,22 @@
-import React from 'react';
-import { View, useWindowDimensions } from 'react-native';
+import React, { useState } from 'react';
+import { useWindowDimensions, View } from 'react-native';
 import { StatusBarHeight } from '../../util';
 import Canvas from '../Canvas';
+import CanvasControls from '../CanvasControls';
 
 const WatercolorCanvas = () => {
-  const draw = ctx => {
-    // background
-    ctx.fillStyle = '#000000';
-    ctx.fillRect(0, 0, ctx.canvas.width, ctx.canvas.height);
-    ctx.fill();
-  };
-
   const windowDims = useWindowDimensions();
+
+  const [brushColor, setBrushColor] = useState('#000000');
 
   return (
     <View>
       <Canvas
-        draw={draw}
         width={windowDims.width}
-        height={windowDims.height - StatusBarHeight}
+        height={windowDims.height - StatusBarHeight - 200}
+        brushColor={brushColor}
       />
+      <CanvasControls setBrushColor={setBrushColor} />
     </View>
   );
 };
